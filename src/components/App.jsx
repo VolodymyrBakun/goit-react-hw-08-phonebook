@@ -1,6 +1,3 @@
-// import { ContactForm } from './ContactForm/ContactForm';
-// import { ContactList } from './ContactList/ContactList';
-// import { Filter } from './Filter/Filter';
 import { Suspense, useEffect } from 'react';
 import { Container } from './App.styled';
 import { Route, Routes } from 'react-router-dom';
@@ -30,12 +27,7 @@ dispatch(refreshUserThunk())
   return (
     <Container>
       <Navigation />
-      <UserMenu />
-      {/* <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList /> */}
+      {authentificated && <UserMenu />}
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />

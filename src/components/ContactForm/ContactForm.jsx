@@ -3,8 +3,6 @@ import { Form, Name, Number, SubmitBtn } from './ContactForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContactThunk } from 'redux/contactsOperations';
 import { selectUserContacts } from 'redux/contactsSlice';
-// import { addContact } from 'redux/contactsSlice';
-// import { nanoid } from 'nanoid';
 
 export function ContactForm() {
   const [name, setName] = useState('');
@@ -34,19 +32,13 @@ export function ContactForm() {
       return;
     }
 
-    const contact = {
-      // id: nanoid(),
-      name,
-      number,
-    };
-    dispatch(addContactThunk({name,number}));
+    dispatch(addContactThunk({ name, number }));
 
     setName('');
     setNumber('');
   };
 
   return (
-    
     <Form onSubmit={handleFormSubmit}>
       <label htmlFor="name">Name</label>
       <Name

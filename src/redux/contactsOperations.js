@@ -1,16 +1,18 @@
-import { createAsyncThunk } from "@reduxjs/toolkit"
-import { $instance } from "./operations"
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { $instance } from './operations';
 
-
-export const requestContactsThunk = createAsyncThunk('contacts/getAll', async (_, thunkApi) => {
+export const requestContactsThunk = createAsyncThunk(
+  'contacts/getAll',
+  async (_, thunkApi) => {
     try {
-        const { data } = await $instance.get('/contacts');
+      const { data } = await $instance.get('/contacts');
 
-        return data
+      return data;
     } catch (error) {
-        return thunkApi.rejectWithValue(error.message)
+      return thunkApi.rejectWithValue(error.message);
     }
-});
+  }
+);
 
 export const addContactThunk = createAsyncThunk(
   'contacts/addContact',

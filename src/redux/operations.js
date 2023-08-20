@@ -59,10 +59,9 @@ export const refreshUserThunk = createAsyncThunk(
 export const logoutUserThunk = createAsyncThunk(
   'auth/logoutUser',
   async (_, thunkApi) => {
-
     try {
-        const { data } = await $instance.post('/users/logout');
-        clearToken();
+      const { data } = await $instance.post('/users/logout');
+      clearToken();
 
       return data;
     } catch (error) {

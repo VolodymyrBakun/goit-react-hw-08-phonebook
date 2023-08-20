@@ -36,10 +36,6 @@ const LoginPage = () => {
     <>
       <p>Log in</p>
       <form onSubmit={handleSubmit}>
-        {/* <label>
-          <p>Name</p>
-          <input name="userName" type="text" minLength={2} required />
-        </label> */}
         <label>
           <p>Email</p>
           <input name="userEmail" type="email" minLength={2} required />

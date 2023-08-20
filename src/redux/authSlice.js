@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUserThunk, loginUserThunk, refreshUserThunk, logoutUserThunk } from './operations';
+import {
+  registerUserThunk,
+  loginUserThunk,
+  refreshUserThunk,
+  logoutUserThunk,
+} from './operations';
 
 const initialState = {
   isLoading: false,
@@ -59,7 +64,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-    // __________ Logout ____________
+      // __________ Logout ____________
       .addCase(logoutUserThunk.pending, (state, action) => {
         state.isLoading = true;
         state.error = null;
@@ -74,25 +79,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       });
-    
   },
-
-  // reducers: {
-  //   addContact: (state, action) => {
-  //     state.contacts.push(action.payload);
-  //   },
-  //   deleteContact: (state, action) => {
-  //     state.contacts = state.contacts.filter(
-  //       contact => contact.id !== action.payload
-  //     );
-  //   },
-  //   filterContacts: (state, action) => {
-  //     state.filter = action.payload;
-  //   },
-  // },
 });
-
-// export const { addContact, deleteContact, filterContacts } =
-//   contactsSlice.actions;
 
 export const authReducer = authSlice.reducer;
