@@ -1,10 +1,12 @@
 import { Contact } from 'components/Contact/Contact';
 import { List } from './ContactList.styled';
 import { useSelector } from 'react-redux';
+import { selectUserContacts } from 'redux/contactsSlice';
 
 export const ContactList = () => {
-  const contacts = useSelector(state => state.contacts.contacts);
-  const toFilter = useSelector(state => state.contacts.filter);
+  const contacts = useSelector(selectUserContacts) ?? [];
+  console.log('contacts: ', contacts);
+  const toFilter = '';
 
   const contactsToRender = () => {
     const normalizedFilter = toFilter.toLowerCase();
@@ -18,9 +20,9 @@ export const ContactList = () => {
   return (
     <>
       <List>
-        {contactsData.map(contact => {
-          return <Contact contact={contact} key={contact.id} />;
-        })}
+        {contacts ? contactsData.map(contact => {
+          return <Contact contact={contact} key={contact.id} />
+        }): <p>No contacts</p>}
       </List>
     </>
   );
